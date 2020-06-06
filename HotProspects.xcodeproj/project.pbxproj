@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B91AF3BA248BC31A00175ABB /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AF3B9248BC31A00175ABB /* Prospect.swift */; };
 		B97818D1248A90EE00260E75 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = B97818D0248A90EE00260E75 /* SamplePackage */; };
 		B989EBA7248AD338008D627F /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EBA6248AD338008D627F /* ProspectsView.swift */; };
 		B989EBA9248AD349008D627F /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EBA8248AD349008D627F /* MeView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B91AF3B9248BC31A00175ABB /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 		B989EBA6248AD338008D627F /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
 		B989EBA8248AD349008D627F /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 		B9E6BD662486D790000BDD1F /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 			children = (
 				B9E6BD692486D790000BDD1F /* AppDelegate.swift */,
 				B9E6BD6B2486D790000BDD1F /* SceneDelegate.swift */,
+				B91AF3B9248BC31A00175ABB /* Prospect.swift */,
 				B9E6BD6D2486D790000BDD1F /* ContentView.swift */,
 				B989EBA6248AD338008D627F /* ProspectsView.swift */,
 				B989EBA8248AD349008D627F /* MeView.swift */,
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B989EBA7248AD338008D627F /* ProspectsView.swift in Sources */,
+				B91AF3BA248BC31A00175ABB /* Prospect.swift in Sources */,
 				B9E6BD6A2486D790000BDD1F /* AppDelegate.swift in Sources */,
 				B9E6BD6C2486D790000BDD1F /* SceneDelegate.swift in Sources */,
 				B9E6BD6E2486D790000BDD1F /* ContentView.swift in Sources */,
