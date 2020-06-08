@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B905F25D248D85330069F701 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = B905F25C248D85330069F701 /* CodeScanner */; };
 		B91AF3BA248BC31A00175ABB /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AF3B9248BC31A00175ABB /* Prospect.swift */; };
 		B97818D1248A90EE00260E75 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = B97818D0248A90EE00260E75 /* SamplePackage */; };
 		B989EBA7248AD338008D627F /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EBA6248AD338008D627F /* ProspectsView.swift */; };
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B905F25D248D85330069F701 /* CodeScanner in Frameworks */,
 				B97818D1248A90EE00260E75 /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +106,7 @@
 			name = HotProspects;
 			packageProductDependencies = (
 				B97818D0248A90EE00260E75 /* SamplePackage */,
+				B905F25C248D85330069F701 /* CodeScanner */,
 			);
 			productName = HotProspects;
 			productReference = B9E6BD662486D790000BDD1F /* HotProspects.app */;
@@ -135,6 +138,7 @@
 			mainGroup = B9E6BD5D2486D790000BDD1F;
 			packageReferences = (
 				B97818CF248A90EE00260E75 /* XCRemoteSwiftPackageReference "SamplePackage" */,
+				B905F25B248D85330069F701 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = B9E6BD672486D790000BDD1F /* Products */;
 			projectDirPath = "";
@@ -364,6 +368,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B905F25B248D85330069F701 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
 		B97818CF248A90EE00260E75 /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/SamplePackage";
@@ -375,6 +387,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B905F25C248D85330069F701 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B905F25B248D85330069F701 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		B97818D0248A90EE00260E75 /* SamplePackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B97818CF248A90EE00260E75 /* XCRemoteSwiftPackageReference "SamplePackage" */;
