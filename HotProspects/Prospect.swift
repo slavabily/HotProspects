@@ -8,7 +8,11 @@
 
 import SwiftUI
 
-class Prospect: Identifiable, Codable {
+class Prospect: Identifiable, Codable, Equatable {
+    static func == (lhs: Prospect, rhs: Prospect) -> Bool {
+        lhs.isContacted == rhs.isContacted
+    }
+    
     let id = UUID()
     var name = "Anonymous"
     var emailAddress = ""

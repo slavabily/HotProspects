@@ -51,13 +51,20 @@ struct ProspectsView: View {
         NavigationView {
             List {
                 ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading, content: {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
-                    })
-                        .contextMenu {
+                    HStack {
+                        VStack(alignment: .leading, content: {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        })
+                        if self.filteredProspects == self.prospects.people {
+                            if prospect.isContacted {
+                                Image(systemName: "checkmark.circle")
+                            }
+                        }
+                    }
+                    .contextMenu {
                             Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
                                 self.prospects.toggle(prospect)
                             }
@@ -95,7 +102,7 @@ struct ProspectsView: View {
             person.emailAddress = details[1]
             
             self.prospects.add(person)
-         case .failure(let error):
+        case .failure(let error):
             print("Scanning failed")
         }
     }
