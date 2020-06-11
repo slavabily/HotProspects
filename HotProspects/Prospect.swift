@@ -9,20 +9,21 @@
 import SwiftUI
 
 class Prospect: Identifiable, Codable, Equatable {
-    static func == (lhs: Prospect, rhs: Prospect) -> Bool {
-        lhs.isContacted == rhs.isContacted
-    }
     
     let id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
+    var dateAdded = Date()
     fileprivate(set) var isContacted = false
+    
+    static func == (lhs: Prospect, rhs: Prospect) -> Bool {
+        lhs.isContacted == rhs.isContacted
+    }
 }
 
 class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
     
-    static let saveKey = "SavedData"
     static let savedFileName = "Saved"
     
     init() {

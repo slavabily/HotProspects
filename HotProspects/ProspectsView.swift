@@ -14,12 +14,19 @@ struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var showingActionSheet = false
     
     enum FilterType {
         case none, contacted, uncontacted
     }
     
+    enum SortType {
+        case none, byName, byDate
+    }
+    
     let filter: FilterType
+    
+    @State private var sorter: SortType = .none
     
     var title: String {
         switch filter {
@@ -47,10 +54,25 @@ struct ProspectsView: View {
         }
     }
     
+    var sortedProspects: [Prospect] {
+        switch sorter {
+        case .byDate:
+            return filteredProspects.sorted {
+                $0.dateAdded > $1.dateAdded
+            }
+        case .byName:
+            return filteredProspects.sorted {
+                $0.name < $1.name
+            }
+        case .none:
+            return filteredProspects
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     HStack {
                         VStack(alignment: .leading, content: {
                             Text(prospect.name)
@@ -58,6 +80,9 @@ struct ProspectsView: View {
                             Text(prospect.emailAddress)
                                 .foregroundColor(.secondary)
                         })
+                        Text(self.string(from: prospect.dateAdded))
+                            .font(.footnote)
+                        
                         if self.filteredProspects == self.prospects.people {
                             if prospect.isContacted {
                                 Image(systemName: "checkmark.circle")
@@ -77,12 +102,23 @@ struct ProspectsView: View {
                 }
             }
             .navigationBarTitle(self.title)
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: Button(action: {
+                self.showingActionSheet = true
+            }, label: {
+                Text("Sort")
+            }), trailing: Button(action: {
                 self.isShowingScanner = true
             }, label: {
                 Image(systemName: "qrcode.viewfinder")
                 Text("Scan")
             }))
+                .actionSheet(isPresented: $showingActionSheet, content: { () -> ActionSheet in
+                    ActionSheet(title: Text("Sorting"), message: nil, buttons: [.default(Text("by Name"), action: {
+                        self.sorter = .byName
+                    }), .default(Text("by Date"), action: {
+                        self.sorter = .byDate
+                    })])
+                })
                 .sheet(isPresented: $isShowingScanner) {
                     CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handlScan)
             }
@@ -100,11 +136,19 @@ struct ProspectsView: View {
             let person = Prospect()
             person.name = details[0]
             person.emailAddress = details[1]
+            person.dateAdded = Date()
             
             self.prospects.add(person)
         case .failure(let error):
-            print("Scanning failed")
+            print("Scanning failed: \(error.localizedDescription)")
         }
+    }
+    
+    func string(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        
+        return formatter.string(from: date)
     }
     
     func addNotification(for prospect: Prospect) {
